@@ -1,5 +1,5 @@
 /*!
- *  CashCash 0.1.0
+ *  CashCash 0.1.1
  *
  *  A very small DOM library inspired by jQuery.
  *

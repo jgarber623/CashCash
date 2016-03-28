@@ -25,7 +25,7 @@ CashCash is also really tiny:
 		</tr>
 		<tr>
 			<th>Minified and gzipped</th>
-			<td>499 bytes</td>
+			<td>500 bytes</td>
 		</tr>
 	</tbody>
 </table>
