@@ -1,0 +1,32 @@
+{
+  "name": "cashcash",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jgarber623/CashCash",
+  "authors": [
+    "Jason Garber <jason@sixtwothree.org> (http://sixtwothree.org)"
+  ],
+  "description": "A very small DOM library inspired by jQuery.",
+  "main": "dist/cashcash.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "dom",
+    "javascript",
+    "queryselector"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "scripts",
+    "spec",
+    "CONTRIBUTING.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jgarber623/CashCash.git"
+  }
+}
