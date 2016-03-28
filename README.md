@@ -1,7 +1,6 @@
 # CashCash
 
 [![npm version](https://badge.fury.io/js/cashcash.svg)](https://badge.fury.io/js/cashcash)
-[![Build Status](https://travis-ci.org/jgarber623/CashCash.svg?branch=master)](https://travis-ci.org/jgarber623/CashCash)
 [![Code Climate](https://codeclimate.com/github/jgarber623/CashCash/badges/gpa.svg)](https://codeclimate.com/github/jgarber623/CashCash)
 
 CashCash is a very small DOM library inspired by [jQuery](http://jquery.com/). The project's primary goal is to smooth over some of the rough edges in JavaScript's native DOM querying methods.
