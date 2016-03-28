@@ -161,7 +161,7 @@ CashCash is inspired by [jQuery](http://jquery.com/) and the many micro DOM libr
 CashCash is written and maintained by [Jason Garber](https://sixtwothree.org/) and is another in a growing line of small, curiously-named JavaScript utilities:
 
 - [RadioRadio](https://github.com/jgarber623/RadioRadio), a very basic [PubSub](https://en.wikipedia.org/wiki/Publish–subscribe_pattern) library.
-- [RouterRouter](https://github.com/jgarber623/RouterRouter), a routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-169)l
+- [RouterRouter](https://github.com/jgarber623/RouterRouter), a routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-169).
 
 
 ## License
