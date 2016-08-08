@@ -32,6 +32,7 @@
   "homepage": "https://github.com/jgarber623/CashCash",
   "devDependencies": {
     "cli-table": "^0.3.1",
+    "codeclimate-test-reporter": "^0.3.3",
     "colors": "^1.1.2",
     "comma-number": "^1.1.0",
     "gzip-size": "^3.0.0",
