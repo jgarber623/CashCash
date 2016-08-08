@@ -15,4 +15,5 @@ ratings:
     - src/
 exclude_paths:
   - dist/
+  - example/
   - spec/
