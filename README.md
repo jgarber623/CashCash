@@ -10,7 +10,7 @@ CashCash is a very small DOM library inspired by [jQuery](http://jquery.com/). T
 
 - Uses JavaScript's native [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method
 - Dependency-free
-- AMD/CommonJS module support
+- AMD/Node module support
 
 CashCash is also really tiny:
 
@@ -18,15 +18,15 @@ CashCash is also really tiny:
 	<tbody>
 		<tr>
 			<th>Uncompressed</th>
-			<td>1,349 bytes</td>
+			<td>1,392 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified</th>
-			<td>831 bytes</td>
+			<td>858 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified and gzipped</th>
-			<td>500 bytes</td>
+			<td>508 bytes</td>
 		</tr>
 	</tbody>
 </table>
@@ -55,8 +55,10 @@ CashCash takes two arguments: a `selector` (a string) and an optional `context` 
 
 ```js
 var divs = CashCash('div');              // select all `<div>`s on a page
-var paragraphs = CashCash('p', divs[0]); // select all `<p>`s within the first container `<div>`
+var paragraphs = CashCash('p', divs[0]); // select all `<p>`s within the first `<div>`
 ```
+
+Under the covers, CashCash uses the browser's native [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method and therefore supports the same CSS selectors.
 
 When selecting DOM nodes based on the provided `selector` string, CashCash will store references to those selected DOM elements on itself in an array like fashion for easy access to individual DOM nodes.
 
@@ -81,28 +83,9 @@ console.log(paragraphs[1]); // logs `<p>Paragraph 2</p>`
 console.log(paragraphs[4]); // logs `<p>Paragraph 5</p>`
 ```
 
-### Utilities
+### Properties and Methods
 
-#### selector
-
-As best as possible, CashCash keeps track of the selector used in a given query, making it available to you by calling:
-
-```js
-console.log(CashCash('p').selector);       // logs the string `p`
-console.log(CashCash('p', '#container'));  // logs the string `#container p`
-console.log(CashCash('p', document.body)); // logs the string `p`
-```
-
-#### context
-
-CashCash makes available a reference to the context for a given query (if one is provided and that context is an `HTMLElement`). If no context is given (or if the given context is a string), CashCash will default to `HTMLDocument`.
-
-```js
-console.log(CashCash('#container'));      // logs a reference to `HTMLDocument`
-console.log(CashCash('p', container[0])); // logs a reference to `container[0]`
-```
-
-#### length
+#### `length`
 
 For all queries (valid or otherwise), CashCash will return the length (defaulting to `0`) of the queried elements.
 
@@ -110,7 +93,7 @@ For all queries (valid or otherwise), CashCash will return the length (defaultin
 var thisManyBodyElements = CashCash('body').length; // returns `1`
 ```
 
-#### toArray
+#### `toArray()`
 
 JavaScript's native `querySelectorAll` method returns a [`NodeList`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) which is _like_ an array, but lacks at least one useful feature of arrays: the [`forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method. To ease that particular pain, CashCash objects can be converted to arrays:
 
@@ -126,6 +109,33 @@ CashCash('p').toArray().forEach(function(el) {
 });
 ```
 
+#### `selector`
+
+As best as possible, CashCash keeps track of the selector used in a given query, making it available to you by calling:
+
+```js
+console.log(CashCash('p').selector);                // logs the string `p`
+console.log(CashCash('p', '#container').selector);  // logs the string `#container p`
+console.log(CashCash('p', document.body).selector); // logs the string `p`
+```
+
+#### `context`
+
+CashCash makes available a reference to the context for a given query (if one is provided and that context is an `HTMLElement`). If no context is given (or if the given context is a string), CashCash will default to `HTMLDocument`.
+
+```js
+console.log(CashCash('p').context);                // logs a reference to `HTMLDocument`
+console.log(CashCash('p', '#container').context);  // logs a reference to `HTMLDocument`
+console.log(CashCash('p', document.body).context); // logs a reference to `<body>`
+
+var container = CashCash('#container');
+
+console.log(CashCash('p', container[0]).context); // logs a reference to `<div id="container">`
+```
+
+
+## Tips and Tricks
+
 ### Mimicking jQuery
 
 If you want to cut down on some typing (and potentially confuse your teammates), you can reassign `CashCash` to `$` to mimic jQuery:
@@ -139,6 +149,16 @@ If you want to cut down on some typing (and potentially confuse your teammates),
         …
     })(CashCash);
 </script>
+```
+
+### Using with `instanceof`
+
+To determine whether or not a variable is a CashCash object, use `instanceof`:
+
+```js
+var divs = CashCash('div');
+
+console.log(divs instanceof CashCash); // logs `true`
 ```
 
 

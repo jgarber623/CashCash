@@ -1,7 +1,7 @@
 (function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define([], factory);
-	} else if (typeof exports === 'object') {
+	} else if (typeof module === 'object' && module.exports) {
 		module.exports = factory();
 	} else {
 		root.CashCash = factory();
@@ -9,11 +9,11 @@
 }(this, function() {
 	'use strict';
 
-	var CashCash = function(selector, context) {
+	var Cash = function(selector, context) {
 		selector = typeof selector === 'string' ? selector.trim() : '';
 
 		if (selector.length) {
-			selector = typeof context === 'string' && context.trim().length ? (context + ' ' + selector) : selector;
+			selector = typeof context === 'string' && context.trim().length ? (context.trim() + ' ' + selector) : selector;
 			context = context instanceof HTMLElement ? context : document;
 
 			var elements = context.querySelectorAll(selector),
@@ -27,18 +27,19 @@
 				this[count] = elements[count];
 			}
 		}
-
-		return this;
 	};
 
-	CashCash.prototype = {
+	var CashCash = function(selector, context) {
+		return new Cash(selector, context);
+	};
+
+	Cash.prototype = CashCash.prototype = {
 		length: 0,
+
 		toArray: function() {
 			return Array.prototype.slice.call(this);
 		}
 	};
 
-	return function(selector, context) {
-		return new CashCash(selector, context);
-	};
+	return CashCash;
 }));
