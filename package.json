@@ -9,7 +9,7 @@
   "scripts": {
     "build": "./scripts/build.js; ./scripts/stats.js",
     "stats": "./scripts/stats.js",
-    "test": "open ./spec/runner.html"
+    "test": "$(npm bin)/phantomjs ./spec/console-runner.js file:///`pwd`/spec/runner.html"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "comma-number": "^1.1.0",
     "gzip-size": "^3.0.0",
     "jasmine": "^2.5.2",
+    "phantomjs-prebuilt": "^2.1.14",
     "uglify-js": "^2.7.5"
   }
 }
