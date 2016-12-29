@@ -8,6 +8,8 @@ var colorizedText = function(color, text) {
 	return '\033[' + color + 'm' + text + '\033[0m';
 };
 
+console.log('Started');
+
 page.onConsoleMessage = function(message) {
 	console.log(message);
 };
@@ -65,10 +67,10 @@ page.open(system.args[1], function() {
 		pendingSpecs.forEach(function(spec, index) {
 			var normalizedIndex = index + 1;
 			var specNamePrefix = '  ' + normalizedIndex + ') ';
-			var pendingReasonPrefix = '     ' + (normalizedIndex > 9 ? ' ' : '') + '# ';
+			var pendingReasonPrefix = '     ' + (normalizedIndex > 9 ? ' ' : '');
 
-			console.log(colorizedText(33, specNamePrefix + spec.name));
-			console.log(colorizedText(36, pendingReasonPrefix + (spec.reason.length ? spec.reason : 'No reason given')));
+			console.log(specNamePrefix + spec.name);
+			console.log(colorizedText(33, pendingReasonPrefix + (spec.reason.length ? spec.reason : 'No reason given')));
 			console.log('');
 		});
 
@@ -82,12 +84,12 @@ page.open(system.args[1], function() {
 		failedSpecs.forEach(function(spec, index) {
 			var normalizedIndex = index + 1;
 			var specNamePrefix = '  ' + normalizedIndex + ') ';
-			var messagePrefix = '     ' + (normalizedIndex > 9 ? ' ' : '') + colorizedText(31, 'Failure/Error:') + ' ';
+			var messagePrefix = '     ' + (normalizedIndex > 9 ? ' ' : '') + 'Error: ';
 
 			console.log(specNamePrefix + spec.name);
 
 			spec.messages.forEach(function(message) {
-				console.log(messagePrefix + message);
+				console.log(messagePrefix + colorizedText(31, message));
 			});
 
 			console.log('');
@@ -96,9 +98,10 @@ page.open(system.args[1], function() {
 		console.log('');
 	}
 
-	console.log(page.evaluate(function() {
-		return document.querySelector('.jasmine-alert > .jasmine-bar').innerHTML + document.querySelector('.jasmine-alert > .jasmine-duration').innerHTML.replace('finished', '') + '.';
-	}));
+	page.evaluate(function() {
+		console.log(document.querySelector('.jasmine-alert > .jasmine-bar').innerHTML);
+		console.log('Finished in ' + (jsApiReporter.executionTime() / 1000) + ' seconds');
+	});
 
 	console.log('');
 
