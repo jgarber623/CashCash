@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-let colors = require('colors');
-let exec = require('child_process').exec;
-let pkg = require('../package.json');
+const colors = require('colors');
+const exec = require('child_process').exec;
+const pkg = require('../package.json');
 
-let preamble = `/*!
+const preamble = `/*!
  *  CashCash ${pkg.version}
  *
  *  ${pkg.description}

@@ -1,109 +1,103 @@
-#!/usr/bin/env phantomjs
+const puppeteer = require('puppeteer');
 
-var fs = require('fs');
-var page = require('webpage').create();
-var system = require('system');
+const failedStatus =  { color: 31, text: 'F' };
+const passedStatus =  { color: 32, text: '.' };
+const pendingStatus = { color: 33, text: '*' };
 
-var colorizedText = function(color, text) {
-	return '\033[' + color + 'm' + text + '\033[0m';
+function colorizedText(color, text) {
+  return '\033[' + color + 'm' + text + '\033[0m';
 };
 
-console.log('Started');
+puppeteer.launch().then(async browser => {
+  const page = await browser.newPage();
 
-page.onConsoleMessage = function(message) {
-	console.log(message);
-};
+  let statuses =     [];
+  let pendingSpecs = [];
+  let failedSpecs =  [];
 
-page.open(system.args[1], function() {
-	var statuses = [];
-	var pendingSpecs = [];
-	var failedSpecs = [];
+  await page.goto(process.argv[2]);
+  await page.waitForSelector('.jasmine-duration');
 
-	var specs = page.evaluate(function() {
-		return jsApiReporter.specs();
-	});
+  const [executionTime, specs, stats] = await page.evaluate(() => {
+    return [
+      jsApiReporter.executionTime(),
+      jsApiReporter.specs(),
+      document.querySelector('.jasmine-alert > .jasmine-bar').textContent
+    ]
+  });
 
-	specs.forEach(function(spec) {
-		if (spec.status === 'failed') {
-			failedSpecs.push({
-				name: spec.fullName,
-				messages: spec.failedExpectations.map(function(expectation) {
-					return expectation.message;
-				})
-			});
+  specs.forEach(spec => {
+    switch(spec.status) {
+      case 'failed':
+        statuses.push(failedStatus);
 
-			statuses.push({
-				color: 31,
-				text: 'F'
-			});
-		} else if (spec.status === 'pending') {
-			pendingSpecs.push({
-				name: spec.fullName,
-				reason: spec.pendingReason
-			});
+        failedSpecs.push({
+          name: spec.fullName,
+          messages: spec.failedExpectations.map(expectation => {
+            return expectation.message;
+          })
+        });
 
-			statuses.push({
-				color: 33,
-				text: '*'
-			});
-		} else {
-			statuses.push({
-				color: 32,
-				text: '.'
-			});
-		}
-	});
+        break;
+      case 'pending':
+        statuses.push(pendingStatus);
 
-	console.log(statuses.map(function(status) {
-		return colorizedText(status.color, status.text);
-	}).join(''));
+        pendingSpecs.push({
+          name: spec.fullName,
+          reason: spec.pendingReason
+        });
 
-	console.log('');
+        break;
+      default:
+        statuses.push(passedStatus);
+    }
+  });
 
-	if (pendingSpecs.length) {
-		console.log('Pending:');
-		console.log('');
+  console.log(statuses.map(status => {
+    return colorizedText(status.color, status.text);
+  }).join(''));
 
-		pendingSpecs.forEach(function(spec, index) {
-			var normalizedIndex = index + 1;
-			var specNamePrefix = '  ' + normalizedIndex + ') ';
-			var pendingReasonPrefix = '     ' + (normalizedIndex > 9 ? ' ' : '');
+  console.log('');
 
-			console.log(specNamePrefix + spec.name);
-			console.log(colorizedText(33, pendingReasonPrefix + (spec.reason.length ? spec.reason : 'No reason given')));
-			console.log('');
-		});
+  if (pendingSpecs.length) {
+    console.log('Pending:', '');
+    console.log('');
 
-		console.log('');
-	}
+    pendingSpecs.forEach((spec, index) => {
+      let normalizedIndex = index + 1;
 
-	if (failedSpecs.length) {
-		console.log('Failures:');
-		console.log('');
+      console.log(`  ${normalizedIndex}) ${spec.name}`);
+      console.log(colorizedText(33, `     ${normalizedIndex > 9 ? ' ' : ''}${spec.reason.length ? spec.reason : 'No reason given'}`));
+      console.log('');
+    });
 
-		failedSpecs.forEach(function(spec, index) {
-			var normalizedIndex = index + 1;
-			var specNamePrefix = '  ' + normalizedIndex + ') ';
-			var messagePrefix = '     ' + (normalizedIndex > 9 ? ' ' : '') + 'Error: ';
+    console.log('');
+  }
 
-			console.log(specNamePrefix + spec.name);
+  if (failedSpecs.length) {
+    console.log('Failures:');
+    console.log('');
 
-			spec.messages.forEach(function(message) {
-				console.log(messagePrefix + colorizedText(31, message));
-			});
+    failedSpecs.forEach((spec, index) => {
+      let normalizedIndex = index + 1;
 
-			console.log('');
-		});
+      console.log(`  ${normalizedIndex}) ${spec.name}`);
 
-		console.log('');
-	}
+      spec.messages.forEach(message => {
+        console.log(`     ${normalizedIndex > 9 ? ' ' : ''}Error: ${colorizedText(31, message)}`);
+      });
 
-	page.evaluate(function() {
-		console.log(document.querySelector('.jasmine-alert > .jasmine-bar').innerHTML);
-		console.log('Finished in ' + (jsApiReporter.executionTime() / 1000) + ' seconds');
-	});
+      console.log('');
+    });
 
-	console.log('');
+    console.log('');
+  }
 
-	phantom.exit(failedSpecs.length ? 1 : 0);
+  console.log(stats);
+  console.log('Finished in ' + (executionTime / 1000) + ' seconds');
+  console.log('');
+
+  await browser.close();
+
+  process.exit(failedSpecs.length ? 1 : 0);
 });

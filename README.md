@@ -1,45 +1,47 @@
 # CashCash
 
-[![npm version](https://badge.fury.io/js/cashcash.svg)](https://badge.fury.io/js/cashcash)
-[![Build Status](https://travis-ci.org/jgarber623/CashCash.svg?branch=master)](https://travis-ci.org/jgarber623/CashCash)
-[![Code Climate](https://codeclimate.com/github/jgarber623/CashCash/badges/gpa.svg)](https://codeclimate.com/github/jgarber623/CashCash)
+[![npm](https://img.shields.io/npm/v/@jgarber/cashcash.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
+[![Bower](https://img.shields.io/bower/v/cashcash.svg?style=for-the-badge)](https://bower.io/search/?q=cashcash)
+[![Downloads](https://img.shields.io/npm/dt/@jgarber/cashcash.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
+[![Build](https://img.shields.io/travis/jgarber623/CashCash.svg?style=for-the-badge)](https://travis-ci.org/jgarber623/CashCash)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash/maintainability)
+[![Coverage](https://img.shields.io/codeclimate/coverage/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash/test_coverage)
 
-CashCash is a very small DOM library inspired by [jQuery](http://jquery.com/). The project's primary goal is to smooth over some of the rough edges in JavaScript's native DOM querying methods.
+CashCash is a very small DOM library inspired by [jQuery](https://jquery.com). The project's primary goal is to smooth over some of the rough edges in JavaScript's native DOM querying methods.
 
 ### Key Features
 
 - Uses JavaScript's native [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method
 - Dependency-free
-- AMD/Node module support
 
 CashCash is also really tiny:
 
 <table>
-	<tbody>
-		<tr>
-			<th>Uncompressed</th>
-			<td>1,392 bytes</td>
-		</tr>
-		<tr>
-			<th>Minified</th>
-			<td>858 bytes</td>
-		</tr>
-		<tr>
-			<th>Minified and gzipped</th>
-			<td>508 bytes</td>
-		</tr>
-	</tbody>
+  <tbody>
+    <tr>
+      <th>Uncompressed</th>
+      <td>1,226 bytes</td>
+    </tr>
+    <tr>
+      <th>Minified</th>
+      <td>750 bytes</td>
+    </tr>
+    <tr>
+      <th>Minified and gzipped</th>
+      <td>465 bytes</td>
+    </tr>
+  </tbody>
 </table>
 
 
 ## Getting CashCash
 
-Adding CashCash to your project is easy! You've got a couple options:
+You've got a couple options for adding CashCash to your project:
 
-- [Download a tagged version](https://github.com/jgarber623/CashCash/tags) from GitHub and do it yourself _(old school)_.
-- Install via [Bower](http://bower.io/): `bower install cashcash`
-- Install via [npm](https://www.npmjs.com/): `npm install cashcash`
-
+- [Download a tagged version](https://github.com/jgarber623/CashCash/tags) from GitHub and do it yourself (old school).
+- Install using [npm](https://www.npmjs.com/package/@jgarber/cashcash): `npm install @jgarber/cashcash --save`
+- Install using [Yarn](https://yarnpkg.com/en/package/@jgarber/cashcash): `yarn add @jgarber/cashcash`
+- Install using [Bower](https://bower.io/search/?q=cashcash): `bower install cashcash --save`
 
 ## Usage
 
@@ -51,7 +53,7 @@ CashCash('#main');      // select the element with the ID of `main`
 CashCash('p', '#main'); // select all `<p>`s within an element with the ID of `main`
 ```
 
-CashCash takes two arguments: a `selector` (a string) and an optional `context` (a string or an `HTMLElement`). For basic DOM selection, you should be fine passing in any supported CSS selector. For more advanced usage, the second `context` argument might prove useful:
+CashCash accepts two arguments: a `selector` (a string) and an optional `context` (a string or an `HTMLElement`). For basic DOM selection, you should be fine passing in any supported CSS selector. For more advanced usage, the second `context` argument might prove useful:
 
 ```js
 var divs = CashCash('div');              // select all `<div>`s on a page
@@ -105,7 +107,7 @@ You can now use any of JavaScript's native array methods. For instance, you can 
 
 ```js
 CashCash('p').toArray().forEach(function(el) {
-    console.log(el);
+  console.log(el);
 });
 ```
 
@@ -133,7 +135,6 @@ var container = CashCash('#container');
 console.log(CashCash('p', container[0]).context); // logs a reference to `<div id="container">`
 ```
 
-
 ## Tips and Tricks
 
 ### Mimicking jQuery
@@ -143,11 +144,11 @@ If you want to cut down on some typing (and potentially confuse your teammates),
 ```html
 <script src="./dist/cashcash.js"></script>
 <script>
-    (function($) {
-        var paragraphs = $('p');
+  (function($) {
+    var paragraphs = $('p');
 
-        …
-    })(CashCash);
+    …
+  })(CashCash);
 </script>
 ```
 
@@ -161,30 +162,28 @@ var divs = CashCash('div');
 console.log(divs instanceof CashCash); // logs `true`
 ```
 
-
 ## Browser Support
 
-CashCash works in all modern browsers.
-
-It makes use of the [querySelectorAll method](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) which first appeared in Internet Explorer in version 8. To avoid throwing JavaScript errors in browsers that don't support this method, you can [cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard):
+CashCash works in all modern browsers. The library makes use of the [querySelectorAll method](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) which first appeared in Internet Explorer in version 8. To avoid throwing JavaScript errors in browsers that don't support this method, you can [cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard):
 
 ```js
 if ('querySelector' in document) {
-    // Your scripts here…
+  // Your scripts here…
 }
 ```
 
+CashCash, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
 
 ## Acknowledgments
 
-CashCash is inspired by [jQuery](http://jquery.com/) and the many micro DOM libraries it inspired (like [Ken Wheeler](http://kenwheeler.github.io/)'s [cash](https://github.com/kenwheeler/cash), for instance).
+CashCash is inspired by [jQuery](https://jquery.com) and the many micro DOM libraries it inspired (like [Ken Wheeler](http://kenwheeler.github.io)'s [cash](https://github.com/kenwheeler/cash), for instance).
 
-CashCash is written and maintained by [Jason Garber](https://sixtwothree.org/) and is another in a growing line of small, curiously-named JavaScript utilities:
+CashCash is written and maintained by [Jason Garber](https://sixtwothree.org) and is another in a growing line of small, curiously-named JavaScript utilities:
 
-- [RadioRadio](https://github.com/jgarber623/RadioRadio), a very basic [PubSub](https://en.wikipedia.org/wiki/Publish–subscribe_pattern) library.
-- [RouterRouter](https://github.com/jgarber623/RouterRouter), a routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-169).
-
+- [RadioRadio](https://github.com/jgarber623/RadioRadio), a very small [PubSub](https://en.wikipedia.org/wiki/Publish–subscribe_pattern) library.
+- [RouterRouter](https://github.com/jgarber623/RouterRouter), a very small routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-185).
+- [TemplateTemplate](https://github.com/jgarber623/TemplateTemplate), a very small `<template>` manipulation library.
 
 ## License
 
-CashCash is freely available under [The MIT License](http://opensource.org/licenses/MIT). Use it, learn from it, fork it, improve it, change it, tailor it to your needs.
+CashCash is freely available under the [MIT License](https://opensource.org/licenses/MIT). Use it, learn from it, fork it, improve it, change it, tailor it to your needs.

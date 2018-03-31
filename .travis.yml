@@ -1,20 +1,20 @@
+dist: trusty
+sudo: false
 language: node_js
-
 node_js:
-  - stable
-
+  - 8
+  - 9
 cache:
   directories:
-    - travis_phantomjs
-
-before_install:
-  - export PHANTOMJS_VERSION=2.1.1
-  - export PATH=$PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH
-  - if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then rm -rf $PWD/travis_phantomjs; mkdir -p $PWD/travis_phantomjs; fi
-  - if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then wget https://github.com/Medium/phantomjs/releases/download/v$PHANTOMJS_VERSION/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -O $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2; fi
-  - if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C $PWD/travis_phantomjs; fi
-  - phantomjs --version
-
+    - node_modules
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 notifications:
   email: false
-  slack: sixtwothree:yATLmjTW15443qR7jbCWr3RO
+  slack:
+    rooms:
+      secure: HQ9GcC8n5Zh4JQa8L63wkSVbMzil4PrHBGwoz7+YTS2gGwf+spUhU6rql3VYH/QhYuzmQVKyMpDMWYyQPo9H1likATyL0nIomM9IyvR0VU3o9ti8KHqko6Hx0dtNEqGi9KApj5eINAHdRD8h6WcI4WVbRcZdqCk+YRkR8p9xZ69DIvFR43pbIeiXn4LxSlBggaAXc7jRS8/lCsQFqhu27XgAsb1f5+sGIlq1k4impgcJDRChqz70mz3vKPQEnzXWCbR3rVMsPI8qbd+a3kSAZY9p0nqBcj6HVH0j2D/XrYwkRjAqZgOGSmABfI4JYvww7KQz/auyjGLQt/TbnW2nh22doxvaqV0bSXSpBswBX7hPKO8dz6QCExiPmkNGXkcTXQ2IZckss0KT3zOWwrWAOaAlDNVe7x78SHIi8iE80MzVOpFy2YkmiKR+q/6ErSjJc6U1VqSIFtnen359K8mXxX169lkXOZguTcTCRuRlo0lmW6b+EY0c2msVISYpq4/Sa3gDybBwXJL7nalNa66diHVJtnVH8zncQgeezizDvaoNTXv7YQh3Xqac7vHTCEM3UiPa9Tky1Pn6z77IFkQ2L/ZSS6h1ZYuH2+tVmnWdPxA61ai1DIFztd66sxdAzJvjN3LeqMAQgCS6RNzUcNg/GCYLISwZzelFtqkuEfPyd0c=
