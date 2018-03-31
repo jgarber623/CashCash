@@ -8,7 +8,7 @@ function colorizedText(color, text) {
   return '\033[' + color + 'm' + text + '\033[0m';
 };
 
-puppeteer.launch().then(async browser => {
+puppeteer.launch({ args: ['--no-sandbox'] }).then(async browser => {
   const page = await browser.newPage();
 
   let statuses =     [];
