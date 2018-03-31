@@ -111,6 +111,8 @@ CashCash('p').toArray().forEach(function(el) {
 });
 ```
 
+**Spring 2018 update:** MDN shows that most browsers have implemented [`NodeList.forEach()`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach). CashCash will include the `toArray()` method for the forseeable future.
+
 #### `selector`
 
 As best as possible, CashCash keeps track of the selector used in a given query, making it available to you by calling:
