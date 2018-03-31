@@ -4,8 +4,8 @@
 [![Bower](https://img.shields.io/bower/v/cashcash.svg?style=for-the-badge)](https://bower.io/search/?q=cashcash)
 [![Downloads](https://img.shields.io/npm/dt/@jgarber/cashcash.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
 [![Build](https://img.shields.io/travis/jgarber623/CashCash.svg?style=for-the-badge)](https://travis-ci.org/jgarber623/CashCash)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash/maintainability)
-[![Coverage](https://img.shields.io/codeclimate/coverage/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash/test_coverage)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash)
+[![Coverage](https://img.shields.io/codeclimate/coverage/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash)
 
 CashCash is a very small DOM library inspired by [jQuery](https://jquery.com). The project's primary goal is to smooth over some of the rough edges in JavaScript's native DOM querying methods.
 
