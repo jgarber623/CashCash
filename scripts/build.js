@@ -4,20 +4,24 @@ const colors = require('colors');
 const exec = require('child_process').exec;
 const pkg = require('../package.json');
 
+const basename = 'cashcash'
+const packageName = 'CashCash';
+const releaseYear = 2016;
+
 const preamble = `/*!
- *  CashCash ${pkg.version}
+ *  ${packageName} ${pkg.version}
  *
  *  ${pkg.description}
  *
  *  Source code available at: ${pkg.homepage}
  *
- *  (c) 2016-present ${pkg.author.name} (${pkg.author.url})
+ *  (c) ${releaseYear}-present ${pkg.author.name} (${pkg.author.url})
  *
- *  CashCash may be freely distributed under the ${pkg.license} license.
+ *  ${packageName} may be freely distributed under the ${pkg.license} license.
  */
 `;
 
-exec(`$(npm bin)/uglifyjs src/cashcash.js --beautify 'indent-level=2' --preamble '${preamble}' --output dist/cashcash.js`);
-exec(`$(npm bin)/uglifyjs src/cashcash.js --compress --mangle --preamble '${preamble}' --output dist/cashcash.min.js`);
+exec(`$(npm bin)/uglifyjs src/${basename}.js --beautify 'indent-level=2' --preamble '${preamble}' --output dist/${basename}.js`);
+exec(`$(npm bin)/uglifyjs src/${basename}.js --compress --mangle --preamble '${preamble}' --output dist/${basename}.min.js`);
 
-console.log(colors.green(`CashCash ${pkg.version} built successfully!`));
+console.log(colors.green(`${packageName} ${pkg.version} built successfully!`));

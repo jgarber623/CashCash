@@ -9,6 +9,8 @@ function colorizedText(color, text) {
 };
 
 puppeteer.launch({ args: ['--no-sandbox'] }).then(async browser => {
+  console.log('Started');
+
   const page = await browser.newPage();
 
   let statuses =     [];
@@ -95,7 +97,6 @@ puppeteer.launch({ args: ['--no-sandbox'] }).then(async browser => {
 
   console.log(stats);
   console.log('Finished in ' + (executionTime / 1000) + ' seconds');
-  console.log('');
 
   await browser.close();
 
