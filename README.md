@@ -173,7 +173,7 @@ console.log(divs instanceof CashCash); // logs `true`
 CashCash works in all modern browsers. The library makes use of the [querySelectorAll method](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) which first appeared in Internet Explorer in version 8. To avoid throwing JavaScript errors in browsers that don't support this method, you can [cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard):
 
 ```js
-if ('querySelector' in document) {
+if (document.querySelector) {
   // Your scripts here…
 }
 ```
