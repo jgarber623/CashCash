@@ -1,5 +1,5 @@
 /*!
- *  CashCash 1.0.0
+ *  CashCash 1.1.0
  *
  *  A very small DOM library inspired by jQuery.
  *
@@ -11,8 +11,14 @@
  */
 
 (function(root, factory) {
-  root.CashCash = factory(root.document);
-})(this, function(document) {
+  if (typeof define === "function" && define.amd) {
+    define([], factory);
+  } else if (typeof module === "object" && module.exports) {
+    module.exports = factory();
+  } else {
+    root.CashCash = factory();
+  }
+})(typeof self !== "undefined" ? self : this, function() {
   "use strict";
   var Cash = function(selector, context) {
     selector = typeof selector === "string" ? selector.trim() : "";

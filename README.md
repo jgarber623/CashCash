@@ -1,5 +1,7 @@
 # CashCash
 
+**A very small DOM library inspired by [jQuery](https://jquery.com) that smooths over some of the rough edges in JavaScript's native DOM querying methods.**
+
 [![npm](https://img.shields.io/npm/v/@jgarber/cashcash.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
 [![Bower](https://img.shields.io/bower/v/cashcash.svg?style=for-the-badge)](https://bower.io/search/?q=cashcash)
 [![Downloads](https://img.shields.io/npm/dt/@jgarber/cashcash.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
@@ -7,12 +9,11 @@
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash)
 [![Coverage](https://img.shields.io/codeclimate/coverage/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash)
 
-CashCash is a very small DOM library inspired by [jQuery](https://jquery.com). The project's primary goal is to smooth over some of the rough edges in JavaScript's native DOM querying methods.
-
 ### Key Features
 
 - Uses JavaScript's native [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method
 - Dependency-free
+- AMD/Node module support
 
 CashCash is also really tiny:
 
@@ -20,25 +21,24 @@ CashCash is also really tiny:
   <tbody>
     <tr>
       <th>Uncompressed</th>
-      <td>1,226 bytes</td>
+      <td>1,429 bytes</td>
     </tr>
     <tr>
       <th>Minified</th>
-      <td>750 bytes</td>
+      <td>888 bytes</td>
     </tr>
     <tr>
       <th>Minified and gzipped</th>
-      <td>465 bytes</td>
+      <td>523 bytes</td>
     </tr>
   </tbody>
 </table>
-
 
 ## Getting CashCash
 
 You've got a couple options for adding CashCash to your project:
 
-- [Download a tagged version](https://github.com/jgarber623/CashCash/tags) from GitHub and do it yourself (old school).
+- [Download a tagged version](https://github.com/jgarber623/CashCash/tags) from GitHub and do it yourself _(old school)_.
 - Install using [npm](https://www.npmjs.com/package/@jgarber/cashcash): `npm install @jgarber/cashcash --save`
 - Install using [Yarn](https://yarnpkg.com/en/package/@jgarber/cashcash): `yarn add @jgarber/cashcash`
 - Install using [Bower](https://bower.io/search/?q=cashcash): `bower install cashcash --save`
@@ -136,6 +136,10 @@ var container = CashCash('#container');
 
 console.log(CashCash('p', container[0]).context); // logs a reference to `<div id="container">`
 ```
+
+### Example
+
+For a full-featured CashCash demonstration, check out [the included example file](https://github.com/jgarber623/CashCash/blob/master/example/index.html).
 
 ## Tips and Tricks
 
