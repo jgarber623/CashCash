@@ -3,7 +3,6 @@
 **A very small DOM library inspired by [jQuery](https://jquery.com) that smooths over some of the rough edges in JavaScript's native DOM querying methods.**
 
 [![npm](https://img.shields.io/npm/v/@jgarber/cashcash.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
-[![Bower](https://img.shields.io/bower/v/cashcash.svg?style=for-the-badge)](https://bower.io/search/?q=cashcash)
 [![Downloads](https://img.shields.io/npm/dt/@jgarber/cashcash.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
 [![Build](https://img.shields.io/travis/jgarber623/CashCash.svg?style=for-the-badge)](https://travis-ci.org/jgarber623/CashCash)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/CashCash.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash)
@@ -11,7 +10,7 @@
 
 ### Key Features
 
-- Uses JavaScript's native [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method
+- Uses JavaScript's native [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method
 - Dependency-free
 - AMD/Node module support
 
@@ -20,15 +19,15 @@ CashCash is also really tiny:
 <table>
   <tbody>
     <tr>
-      <th>Uncompressed</th>
+      <th align="left">Uncompressed</th>
       <td>1,429 bytes</td>
     </tr>
     <tr>
-      <th>Minified</th>
+      <th align="left">Minified</th>
       <td>888 bytes</td>
     </tr>
     <tr>
-      <th>Minified and gzipped</th>
+      <th align="left">Minified and gzipped</th>
       <td>523 bytes</td>
     </tr>
   </tbody>
@@ -60,7 +59,7 @@ var divs = CashCash('div');              // select all `<div>`s on a page
 var paragraphs = CashCash('p', divs[0]); // select all `<p>`s within the first `<div>`
 ```
 
-Under the covers, CashCash uses the browser's native [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method and therefore supports the same CSS selectors.
+Under the covers, CashCash uses the browser's native [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method and therefore supports the same CSS selectors.
 
 When selecting DOM nodes based on the provided `selector` string, CashCash will store references to those selected DOM elements on itself in an array like fashion for easy access to individual DOM nodes.
 
@@ -170,7 +169,7 @@ console.log(divs instanceof CashCash); // logs `true`
 
 ## Browser Support
 
-CashCash works in all modern browsers. The library makes use of the [querySelectorAll method](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) which first appeared in Internet Explorer in version 8. To avoid throwing JavaScript errors in browsers that don't support this method, you can [cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard):
+CashCash works in all modern browsers. The library makes use of the [`querySelectorAll` method](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) which first appeared in Internet Explorer in version 8. To avoid throwing JavaScript errors in browsers that don't support this method, you can [cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard):
 
 ```js
 if (document.querySelector) {
