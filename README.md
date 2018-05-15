@@ -16,22 +16,11 @@
 
 CashCash is also really tiny:
 
-<table>
-  <tbody>
-    <tr>
-      <th align="left">Uncompressed</th>
-      <td>1,429 bytes</td>
-    </tr>
-    <tr>
-      <th align="left">Minified</th>
-      <td>888 bytes</td>
-    </tr>
-    <tr>
-      <th align="left">Minified and gzipped</th>
-      <td>523 bytes</td>
-    </tr>
-  </tbody>
-</table>
+| Format                 | File Size   | Gzipped Size |
+|:-----------------------|:------------|:-------------|
+| Uncompressed (module)  | 1,072 bytes | 516 bytes    |
+| Uncompressed (browser) | 1,366 bytes | 613 bytes    |
+| Minified (browser)     | 870 bytes   | 516 bytes    |
 
 ## Getting CashCash
 

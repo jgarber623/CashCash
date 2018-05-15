@@ -1,7 +1,7 @@
 {
   "name": "cashcash",
   "description": "A very small DOM library inspired by jQuery.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "dist/cashcash.js",
   "moduleType": [
     "globals",
