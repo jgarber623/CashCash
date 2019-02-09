@@ -16,11 +16,11 @@
 
 CashCash is also really tiny:
 
-| Format                 | File Size   | Gzipped Size |
-|:-----------------------|:------------|:-------------|
-| Uncompressed (module)  | 1,072 bytes | 516 bytes    |
-| Uncompressed (browser) | 1,366 bytes | 613 bytes    |
-| Minified (browser)     | 870 bytes   | 516 bytes    |
+| Format                 | File Size   | Minified Size | Gzipped Size |
+|:-----------------------|:------------|:--------------|:-------------|
+| Uncompressed (module)  | 1,072 bytes | 444 bytes     | 278 bytes    |
+| Uncompressed (browser) | 1,396 bytes | 598 bytes     | 347 bytes    |
+| Minified (browser)     | 880 bytes   | 598 bytes     | 347 bytes    |
 
 ## Getting CashCash
 
