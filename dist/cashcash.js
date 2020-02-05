@@ -1,5 +1,5 @@
 /*!
- *  CashCash v1.2.0
+ *  CashCash v2.0.0
  *
  *  A very small DOM library inspired by jQuery.
  *
@@ -13,30 +13,27 @@
 (function(global, factory) {
   typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = global || self, 
   global.CashCash = factory());
-})(this, function() {
+})(this, (function() {
   "use strict";
-  var Cash = function(selector, context) {
-    selector = typeof selector === "string" ? selector.trim() : "";
-    if (selector.length) {
-      selector = typeof context === "string" && context.trim().length ? context.trim() + " " + selector : selector;
-      context = context instanceof HTMLElement ? context : document;
-      var elements = context.querySelectorAll(selector), count = elements.length;
-      this.length = count;
-      this.context = context;
-      this.selector = selector;
-      while (count--) {
-        this[count] = elements[count];
+  class Cash {
+    constructor(selector, context) {
+      this.length = 0;
+      selector = typeof selector === "string" ? selector.trim() : "";
+      if (selector.length) {
+        selector = typeof context === "string" && context.trim().length ? `${context.trim()} ${selector}` : selector;
+        context = context instanceof HTMLElement ? context : document;
+        const elements = context.querySelectorAll(selector);
+        this.selector = selector;
+        this.context = context;
+        this.length = elements.length;
+        elements.forEach((element, index) => {
+          this[index] = element;
+        });
       }
     }
-  };
-  var CashCash = function(selector, context) {
+  }
+  function CashCash(selector, context) {
     return new Cash(selector, context);
-  };
-  Cash.prototype = CashCash.prototype = {
-    length: 0,
-    toArray: function() {
-      return Array.prototype.slice.call(this);
-    }
-  };
+  }
   return CashCash;
-});
+}));
