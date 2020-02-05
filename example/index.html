@@ -30,11 +30,12 @@
     <p id="paragraph-4">Morbi lacinia et dui a convallis. Donec vel leo vel tortor ultricies suscipit sit amet in neque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam euismod lectus aliquam, cursus massa eget, luctus enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis mollis, velit at varius cursus, leo quam porta justo, nec ornare sapien nulla nec eros. Praesent ligula ligula, condimentum a nulla ac, ultricies accumsan sapien. Aenean condimentum tortor et nulla gravida, ut efficitur enim placerat. Sed fermentum tempus pellentesque. Morbi porttitor orci a enim ornare, a sodales mi congue. Proin a consectetur ipsum.</p>
   </main>
 
-  <script src="../dist/cashcash.js"></script>
-  <script>
-    var $main = CashCash('main'),
-        $h1 = CashCash('h1', $main[0]),
-        $p = CashCash('p');
+  <script type="module">
+    import CashCash from '../dist/cashcash.mjs';
+
+    const $main = CashCash('main');
+    const $h1 = CashCash('h1', $main[0]);
+    const $p = CashCash('p');
 
     console.log($p);
     console.log($p.toArray());
