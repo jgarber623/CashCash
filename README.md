@@ -135,7 +135,7 @@ CashCash works in modern browsers. The library makes use of several new(ish) Jav
 - Arrow function expressions ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
 - Classes ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes))
 - Template literals ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals))
-- `document.querySelectorAll()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll))
+- `Document.querySelectorAll()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll))
 - `NodeList.prototype.forEach` ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach))
 
 CashCash, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
