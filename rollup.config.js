@@ -29,7 +29,7 @@ const preamble = `/*!
 `;
 
 export default [
-  // cashcash.es.js and cashcash.js
+  // cashcash.mjs and cashcash.js
   {
     input: srcFilePath,
     output: [
@@ -61,7 +61,7 @@ export default [
   {
     input: srcFilePath,
     output: {
-      file: pkg.main.replace(/\.js$/, '.min.js'),
+      file: pkg.browser,
       format: 'umd',
       name: packageName
     },
