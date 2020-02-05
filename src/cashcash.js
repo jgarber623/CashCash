@@ -1,33 +1,26 @@
-var Cash = function(selector, context) {
-  selector = typeof selector === 'string' ? selector.trim() : '';
+class Cash {
+  constructor(selector, context) {
+    this.length = 0;
 
-  if (selector.length) {
-    selector = typeof context === 'string' && context.trim().length ? (context.trim() + ' ' + selector) : selector;
-    context = context instanceof HTMLElement ? context : document;
+    selector = typeof selector === 'string' ? selector.trim() : '';
 
-    var elements = context.querySelectorAll(selector),
-        count = elements.length;
+    if (selector.length) {
+      selector = typeof context === 'string' && context.trim().length ? `${context.trim()} ${selector}` : selector;
+      context = context instanceof HTMLElement ? context : document;
 
-    this.length = count;
-    this.context = context;
-    this.selector = selector;
+      const elements = context.querySelectorAll(selector);
 
-    while (count--) {
-      this[count] = elements[count];
+      this.selector = selector;
+      this.context = context;
+      this.length = elements.length;
+
+      elements.forEach((element, index) => {
+        this[index] = element;
+      });
     }
   }
-};
+}
 
-var CashCash = function(selector, context) {
+export default function CashCash(selector, context) {
   return new Cash(selector, context);
-};
-
-Cash.prototype = CashCash.prototype = {
-  length: 0,
-
-  toArray: function() {
-    return Array.prototype.slice.call(this);
-  }
-};
-
-export default CashCash;
+}
