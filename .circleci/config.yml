@@ -5,6 +5,9 @@ orbs:
 
 jobs:
   test:
+    paramaters:
+      node_version:
+        type: integer
     executor:
       name: node/default
       tag: << parameters.node_version >>
