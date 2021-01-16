@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   test:
-    paramaters:
+    parameters:
       node_version:
         type: integer
     executor:
