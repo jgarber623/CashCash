@@ -1,0 +1,35 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.1.0
+
+jobs:
+  test:
+    executor:
+      name: node/default
+      tag: << parameters.node_version >>
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Install CodeClimate test reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
+      - node/test
+      - run:
+          name: Upload coverage report to CodeClimate
+          command: ./cc-test-reporter after-build
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - test:
+          matrix:
+            node_version:
+              - 10
+              - 12
+              - 14
+              - 15
