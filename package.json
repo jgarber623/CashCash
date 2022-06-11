@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@jgarber/eslint-config": "*",
-    "jasmine": "3.99.0",
+    "jasmine": "4.2.0",
     "puppeteer": "*",
     "rollup": "*",
     "rollup-plugin-filesize": "*",
