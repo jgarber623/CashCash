@@ -44,10 +44,7 @@ jobs:
           git diff --quiet
   test:
     name: Test
-    needs:
-      - analyze
-      - lint
-      - build
+    needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
