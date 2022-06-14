@@ -29,14 +29,9 @@
   },
   "repository": "github:jgarber623/CashCash",
   "scripts": {
-    "build": "rollup --config --input src/cashcash.mjs",
+    "build": "rollup --config --input src/cashcash.mjs --name CashCash",
     "lint": "eslint .",
-    "pretest": "npm run build",
     "test": "jasmine-browser-runner runSpecs"
-  },
-  "config": {
-    "displayName": "CashCash",
-    "licenseYear": 2016
   },
   "devDependencies": {
     "@jgarber/eslint-config": "*",
