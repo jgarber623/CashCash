@@ -15,14 +15,6 @@
 - Dependency-free
 - ES2015/AMD/Node module support
 
-CashCash is also really tiny:
-
-| Format                 | File Size   | Minified Size | Gzipped Size |
-|:-----------------------|:------------|:--------------|:-------------|
-| Uncompressed (module)  | 992 bytes   | 647 bytes     | 422 bytes    |
-| Uncompressed (browser) | 1,313 bytes | 810 bytes     | 498 bytes    |
-| Minified (browser)     | 812 bytes   | 810 bytes     | 498 bytes    |
-
 ## Getting CashCash
 
 You've got a couple options for adding CashCash to your project:
@@ -125,6 +117,18 @@ If you want to cut down on some typing (and potentially confuse your teammates),
 
     // …
   })(CashCash);
+</script>
+```
+
+…or:
+
+```html
+<script type="module">
+  import { CashCash as $ } from './dist/cashcash.mjs';
+
+  const paragraphs = $('p');
+
+  // …
 </script>
 ```
 
