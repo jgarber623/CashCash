@@ -58,13 +58,10 @@ You can do the following:
 ```js
 const paragraphs = CashCash('p');
 
-console.log(paragraphs[0]); // logs `<p>Paragraph 1</p>`
-console.log(paragraphs[1]); // logs `<p>Paragraph 2</p>`
-// …
-console.log(paragraphs[4]); // logs `<p>Paragraph 5</p>`
+paragraphs.forEach(paragraph => console.log(paragraph)); // logs `<p>Paragraph 1</p>`, `<p>Paragraph 2</p>`, etc.
 ```
 
-### Properties and Methods
+### Collection Properties
 
 #### `length`
 
@@ -123,7 +120,7 @@ If you want to cut down on some typing (and potentially confuse your teammates),
 
 ```html
 <script type="module">
-  import { CashCash as $ } from './dist/cashcash.mjs';
+  import $ from './dist/cashcash.mjs';
 
   const paragraphs = $('p');
 
