@@ -31,6 +31,7 @@
   "scripts": {
     "build": "rollup --config --input src/cashcash.mjs --name CashCash",
     "lint": "eslint .",
+    "start": "npm run build -- --watch",
     "test": "jasmine-browser-runner runSpecs"
   },
   "devDependencies": {
