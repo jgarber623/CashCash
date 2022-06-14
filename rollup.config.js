@@ -6,10 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 const terserConfig = {
   compress: false,
   mangle: false,
-  output: {
-    beautify: true,
-    indent_level: 2
-  }
+  output: { beautify: true, indent_level: 2 }
 };
 
 export default ({ input, name }) => [
