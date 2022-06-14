@@ -9,7 +9,6 @@
  *
  *  CashCash may be freely distributed under the MIT license.
  */
-
 class Cash {
   length=0;
   #nodes;
