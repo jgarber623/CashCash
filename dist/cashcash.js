@@ -1,5 +1,5 @@
 /*!
- *  CashCash v2.0.0
+ *  CashCash v3.0.0
  *
  *  A very small DOM library inspired by jQuery.
  *
@@ -11,25 +11,22 @@
  */
 
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = global || self, 
+  typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, 
   global.CashCash = factory());
 })(this, (function() {
   "use strict";
   class Cash {
+    length=0;
+    #nodes;
     constructor(selector, context) {
-      this.length = 0;
       selector = typeof selector === "string" ? selector.trim() : "";
-      if (selector.length) {
-        selector = typeof context === "string" && context.trim().length ? `${context.trim()} ${selector}` : selector;
-        context = context instanceof HTMLElement ? context : document;
-        const elements = context.querySelectorAll(selector);
-        this.selector = selector;
-        this.context = context;
-        this.length = elements.length;
-        elements.forEach((element, index) => {
-          this[index] = element;
-        });
-      }
+      if (!selector.length) return;
+      selector = this.selector = typeof context === "string" && context.trim().length ? `${context.trim()} ${selector}` : selector;
+      context = this.context = context instanceof HTMLElement ? context : document;
+      const nodes = this.nodes = context.querySelectorAll(selector);
+      this.length = nodes.length;
+      this.forEach = nodes.forEach;
+      nodes.forEach(((node, index) => this[index] = node));
     }
   }
   function CashCash(selector, context) {

@@ -1,5 +1,5 @@
 /*!
- *  CashCash v2.0.0
+ *  CashCash v3.0.0
  *
  *  A very small DOM library inspired by jQuery.
  *
@@ -11,20 +11,17 @@
  */
 
 class Cash {
+  length=0;
+  #nodes;
   constructor(selector, context) {
-    this.length = 0;
     selector = typeof selector === "string" ? selector.trim() : "";
-    if (selector.length) {
-      selector = typeof context === "string" && context.trim().length ? `${context.trim()} ${selector}` : selector;
-      context = context instanceof HTMLElement ? context : document;
-      const elements = context.querySelectorAll(selector);
-      this.selector = selector;
-      this.context = context;
-      this.length = elements.length;
-      elements.forEach((element, index) => {
-        this[index] = element;
-      });
-    }
+    if (!selector.length) return;
+    selector = this.selector = typeof context === "string" && context.trim().length ? `${context.trim()} ${selector}` : selector;
+    context = this.context = context instanceof HTMLElement ? context : document;
+    const nodes = this.nodes = context.querySelectorAll(selector);
+    this.length = nodes.length;
+    this.forEach = nodes.forEach;
+    nodes.forEach(((node, index) => this[index] = node));
   }
 }
 
@@ -32,4 +29,4 @@ function CashCash(selector, context) {
   return new Cash(selector, context);
 }
 
-export default CashCash;
+export { CashCash as default };
