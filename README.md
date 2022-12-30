@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/@jgarber/cashcash.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
 [![Downloads](https://img.shields.io/npm/dt/@jgarber/cashcash.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
-[![Build](https://img.shields.io/github/workflow/status/jgarber623/CashCash/CI?logo=github&style=for-the-badge)](https://github.com/jgarber623/CashCash/actions/workflows/ci.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/jgarber623/CashCash/ci.yml?branch=main&logo=github&style=for-the-badge)](https://github.com/jgarber623/CashCash/actions/workflows/ci.yml)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/CashCash.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/CashCash)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/jgarber623/CashCash?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/jgarber623/CashCash)
 
