@@ -16,6 +16,7 @@ class Cash {
     this.length = nodes.length;
     this.forEach = nodes.forEach;
 
+    // eslint-disable-next-line no-return-assign
     nodes.forEach((node, index) => this[index] = node);
   }
 }
