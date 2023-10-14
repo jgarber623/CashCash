@@ -7,16 +7,16 @@ const pkg = JSON.parse(readFileSync('./package.json'));
 const input = './src/cashcash.mjs';
 const name = 'CashCash';
 
-const banner = `/*!
- *  ${name} v${pkg.version}
+const banner = `/**
+ * @name ${name}
+ * @version ${pkg.version}
  *
- *  ${pkg.description}
+ * @file ${pkg.description}
  *
- *  Source code available at: ${pkg.homepage}
+ * {@link ${pkg.homepage}}
  *
- *  (c) 2016-present ${pkg.author.name} (${pkg.author.url})
- *
- *  ${name} may be freely distributed under the ${pkg.license} license.
+ * @copyright 2016-${new Date().getFullYear()} ${pkg.author.name} (${pkg.author.url})
+ * @license ${pkg.license}
  */
 `;
 
@@ -34,7 +34,7 @@ export default [
     input,
     output: {
       banner,
-      file: pkg.module,
+      file: pkg.exports.import,
       format: 'es'
     },
     plugins: [terser(terserConfig)]
@@ -43,9 +43,8 @@ export default [
     input,
     output: {
       banner,
-      file: pkg.main,
-      format: 'umd',
-      name
+      file: pkg.exports.require,
+      format: 'cjs'
     },
     plugins: [terser(terserConfig)]
   },
@@ -54,7 +53,7 @@ export default [
     output: {
       banner,
       file: pkg.browser,
-      format: 'umd',
+      format: 'iife',
       name
     },
     plugins: [terser()]
