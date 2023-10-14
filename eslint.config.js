@@ -4,5 +4,14 @@ export default [
   {
     ignores: ['dist']
   },
-  ...config
+  ...config,
+  {
+    files: ['src/*.js'],
+    languageOptions: {
+      globals: {
+        HTMLElement: 'readonly',
+        document: 'readonly'
+      }
+    }
+  }
 ];
