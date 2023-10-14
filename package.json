@@ -35,15 +35,18 @@
   "repository": "github:jgarber623/CashCash",
   "scripts": {
     "build": "rollup --config",
+    "clean": "rm -rf coverage dist",
     "lint": "eslint .",
+    "prebuild": "npm run clean",
     "start": "npm run build -- --watch",
-    "test": "jasmine-browser-runner runSpecs"
+    "test": "c8 ava"
   },
   "devDependencies": {
     "@jgarber/eslint-config": "^2.0.0",
     "@rollup/plugin-terser": "^0.4.4",
-    "jasmine-browser-runner": "^2.1.0",
-    "jasmine-core": "^5.1.0",
+    "ava": "^5.3.1",
+    "c8": "^8.0.1",
+    "jsdom": "^22.1.0",
     "rollup": "^4.1.0"
   },
   "engines": {
