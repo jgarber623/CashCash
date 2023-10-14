@@ -1,4 +1,4 @@
-import CashCash from '../dist/cashcash.mjs';
+import CashCash from '../src/cashcash.mjs';
 
 describe('CashCash', () => {
   const invalidArguments = [undefined, null, function() {}, {}, '', ' '];
