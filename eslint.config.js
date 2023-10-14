@@ -1,10 +1,12 @@
+import ava from '@jgarber/eslint-config/ava';
 import config from '@jgarber/eslint-config';
 
 export default [
   {
-    ignores: ['dist']
+    ignores: ['coverage', 'dist']
   },
   ...config,
+  ...ava,
   {
     files: ['src/*.js'],
     languageOptions: {
