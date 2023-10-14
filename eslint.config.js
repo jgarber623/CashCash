@@ -1,11 +1,11 @@
-const config = require('@jgarber/eslint-config');
-const globals = require('globals');
+import config from '@jgarber/eslint-config';
+import globals from 'globals';
 
-module.exports = [
-  ...config,
+export default [
   {
-    ignores: ['dist/*.?(m)js']
+    ignores: ['dist']
   },
+  ...config,
   {
     files: ['**/*.?(m)js'],
     languageOptions: {
