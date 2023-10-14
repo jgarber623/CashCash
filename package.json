@@ -38,7 +38,9 @@
     "clean": "rm -rf coverage dist",
     "lint": "eslint .",
     "prebuild": "npm run clean",
-    "start": "npm run build -- --watch",
+    "start": "concurrently --kill-others-on-fail --prefix-colors yellow,blue 'npm:start:*'",
+    "start:build": "npm run build -- --watch",
+    "start:serve": "http-server .",
     "test": "c8 ava"
   },
   "devDependencies": {
@@ -46,6 +48,8 @@
     "@rollup/plugin-terser": "^0.4.4",
     "ava": "^5.3.1",
     "c8": "^8.0.1",
+    "concurrently": "^8.2.1",
+    "http-server": "^14.1.1",
     "jsdom": "^22.1.0",
     "rollup": "^4.1.0"
   },
