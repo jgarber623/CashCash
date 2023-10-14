@@ -8,7 +8,7 @@ export default [
   ...config,
   ...ava,
   {
-    files: ['src/*.js'],
+    files: ['src/*.js', 'test/*.js'],
     languageOptions: {
       globals: {
         HTMLElement: 'readonly',
