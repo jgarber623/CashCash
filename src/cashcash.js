@@ -23,6 +23,12 @@ class Cash {
   }
 }
 
+/**
+ * @param {string} selector Any valid CSS selector.
+ * @param {string|HTMLElement} context Optional search context.
+ *
+ * @returns {Cash} An instance of the Cash class
+ */
 export default function CashCash(selector, context) {
   return new Cash(selector, context);
 }
