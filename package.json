@@ -40,6 +40,6 @@
     "globals": "^13.20.0",
     "jasmine-browser-runner": "^2.1.0",
     "jasmine-core": "^5.1.0",
-    "rollup": "^3.27.0"
+    "rollup": "^4.1.0"
   }
 }
