@@ -16,8 +16,10 @@ class Cash {
     this.length = nodes.length;
     this.forEach = nodes.forEach;
 
-    // eslint-disable-next-line no-return-assign
-    nodes.forEach((node, index) => this[index] = node);
+    // eslint-disable-next-line unicorn/prefer-spread
+    for (const [index, node] of Array.from(nodes).entries()) {
+      this[index] = node;
+    }
   }
 }
 
