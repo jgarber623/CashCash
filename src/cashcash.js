@@ -6,9 +6,9 @@ class Cash {
   constructor(selector, context) {
     selector = typeof selector === 'string' ? selector.trim() : '';
 
-    if (!selector.length) return;
+    if (selector.length === 0) return;
 
-    selector = this.selector = typeof context === 'string' && context.trim().length ? `${context.trim()} ${selector}` : selector;
+    selector = this.selector = typeof context === 'string' && context.trim().length > 0 ? `${context.trim()} ${selector}` : selector;
     context = this.context = context instanceof HTMLElement ? context : document;
 
     const nodes = this.nodes = context.querySelectorAll(selector);
