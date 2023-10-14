@@ -6,9 +6,9 @@ class Cash {
   constructor(selector, context) {
     selector = typeof selector === 'string' ? selector.trim() : '';
 
-    if (!selector.length) return;
+    if (selector.length === 0) return;
 
-    selector = this.selector = typeof context === 'string' && context.trim().length ? `${context.trim()} ${selector}` : selector;
+    selector = this.selector = typeof context === 'string' && context.trim().length > 0 ? `${context.trim()} ${selector}` : selector;
     context = this.context = context instanceof HTMLElement ? context : document;
 
     const nodes = this.nodes = context.querySelectorAll(selector);
@@ -16,8 +16,10 @@ class Cash {
     this.length = nodes.length;
     this.forEach = nodes.forEach;
 
-    // eslint-disable-next-line no-return-assign
-    nodes.forEach((node, index) => this[index] = node);
+    // eslint-disable-next-line unicorn/prefer-spread
+    for (const [index, node] of Array.from(nodes).entries()) {
+      this[index] = node;
+    }
   }
 }
 

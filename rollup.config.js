@@ -2,21 +2,21 @@ import { readFileSync } from 'node:fs';
 
 import terser from '@rollup/plugin-terser';
 
-const pkg = JSON.parse(readFileSync('./package.json'));
+const package_ = JSON.parse(readFileSync('./package.json'));
 
 const input = './src/cashcash.mjs';
 const name = 'CashCash';
 
 const banner = `/**
  * @name ${name}
- * @version ${pkg.version}
+ * @version ${package_.version}
  *
- * @file ${pkg.description}
+ * @file ${package_.description}
  *
- * {@link ${pkg.homepage}}
+ * {@link ${package_.homepage}}
  *
- * @copyright 2016-${new Date().getFullYear()} ${pkg.author.name} (${pkg.author.url})
- * @license ${pkg.license}
+ * @copyright 2016-${new Date().getFullYear()} ${package_.author.name} (${package_.author.url})
+ * @license ${package_.license}
  */
 `;
 
@@ -34,7 +34,7 @@ export default [
     input,
     output: {
       banner,
-      file: pkg.exports.import,
+      file: package_.exports.import,
       format: 'es'
     },
     plugins: [terser(terserConfig)]
@@ -43,7 +43,7 @@ export default [
     input,
     output: {
       banner,
-      file: pkg.exports.require,
+      file: package_.exports.require,
       format: 'cjs'
     },
     plugins: [terser(terserConfig)]
@@ -52,7 +52,7 @@ export default [
     input,
     output: {
       banner,
-      file: pkg.browser,
+      file: package_.browser,
       format: 'iife',
       name
     },
