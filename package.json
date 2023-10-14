@@ -19,11 +19,16 @@
     "url": "https://sixtwothree.org"
   },
   "files": [
-    "dist"
+    "dist/*",
+    "example/*",
+    "src/*"
   ],
-  "main": "dist/cashcash.js",
-  "browser": "dist/cashcash.min.js",
-  "module": "dist/cashcash.mjs",
+  "type": "module",
+  "exports": {
+    "import": "./dist/cashcash.mjs",
+    "require": "./dist/cashcash.cjs"
+  },
+  "browser": "./dist/cashcash.js",
   "directories": {
     "example": "example"
   },
@@ -41,5 +46,11 @@
     "jasmine-browser-runner": "^2.1.0",
     "jasmine-core": "^5.1.0",
     "rollup": "^3.27.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
