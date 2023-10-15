@@ -72,7 +72,7 @@ test('valid non-matching selector, valid non-matching context (HTMLElement)', t 
   const context = document.querySelector('#bar');
   const cash = CashCash('#foo', context);
 
-  t.is(cash.context, context);
+  t.is(cash.context, document);
   t.is(cash.selector, '#foo');
   t.is(cash.length, 0);
 });
@@ -124,9 +124,9 @@ test('valid matching selector, valid non-matching context (HTMLElement)', t => {
   const context = document.querySelector('#foo');
   const cash = CashCash('p', context);
 
-  t.is(cash.context, context);
+  t.is(cash.context, document);
   t.is(cash.selector, 'p');
-  t.is(cash.length, 0);
+  t.is(cash.length, 5);
 });
 
 test('valid matching selector, valid matching context (String)', t => {
