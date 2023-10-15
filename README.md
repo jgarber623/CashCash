@@ -10,13 +10,13 @@
 
 - Uses JavaScript's native [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method
 - Dependency-free
-- ES2015/AMD/Node module support
+- JavaScript module (ESM), CommonJS, and browser global (`window.TemplateTemplate`) support
 
 ## Getting CashCash
 
 You've got a couple options for adding CashCash to your project:
 
-- [Download a tagged version](https://github.com/jgarber623/CashCash/tags) from GitHub and do it yourself _(old school)_.
+- [Download a release](https://github.com/jgarber623/CashCash/releases) from GitHub and do it yourself _(old school)_.
 - Install using [npm](https://www.npmjs.com/package/@jgarber/cashcash): `npm install @jgarber/cashcash --save`
 - Install using [Yarn](https://yarnpkg.com/en/package/@jgarber/cashcash): `yarn add @jgarber/cashcash`
 
@@ -128,15 +128,7 @@ If you want to cut down on some typing (and potentially confuse your teammates),
 
 ## Browser Support
 
-CashCash works in modern browsers. The library makes use of several new(ish) JavaScript features, including:
-
-- Arrow function expressions ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
-- Classes ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes))
-- Template literals ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals))
-- `Document.querySelectorAll()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll))
-- `NodeList.prototype.forEach` ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach))
-
-CashCash, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
+**CashCash works in modern browsers.** The library makes use of several new(ish) JavaScript features and, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
 
 ## Acknowledgments
 
