@@ -10,7 +10,7 @@
 
 - Uses JavaScript's native [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method
 - Dependency-free
-- JavaScript module (ESM), CommonJS, and browser global (`window.TemplateTemplate`) support
+- JavaScript module (ESM), CommonJS, and browser global (`window.CashCash`) support
 
 ## Getting CashCash
 
