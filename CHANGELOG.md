@@ -1,6 +1,6 @@
 # Changelog
 
-# 4.0.0 (2023-10-14)
+## 4.0.0 (2023-10-14)
 
 - ca3f086 Minor cleanup (#131)
 - 9261dcd Add JSDoc to source file (#130)
