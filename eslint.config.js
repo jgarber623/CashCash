@@ -11,8 +11,8 @@ export default [
     files: ['src/*.js', 'test/*.js'],
     languageOptions: {
       globals: {
-        HTMLElement: 'readonly',
-        document: 'readonly'
+        document: 'readonly',
+        HTMLElement: 'readonly'
       }
     }
   }
