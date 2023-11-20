@@ -1,5 +1,5 @@
-import test from 'ava';
 import { JSDOM } from 'jsdom';
+import test from 'ava';
 
 import CashCash from '../src/cashcash.js';
 
@@ -27,9 +27,9 @@ const invalidArguments = [undefined, null, function() {}, {}, '', ' '];
 test.before(() => {
   const { window } = new JSDOM(html);
 
-  const { HTMLElement, document } = window;
+  const { document, HTMLElement } = window;
 
-  Object.assign(globalThis, { HTMLElement, document, window });
+  Object.assign(globalThis, { document, HTMLElement, window });
 });
 
 test('invalid selector, no context', t => {
