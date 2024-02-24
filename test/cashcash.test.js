@@ -1,5 +1,7 @@
+import assert from 'node:assert';
+import test from 'node:test';
+
 import { JSDOM } from 'jsdom';
-import test from 'ava';
 
 import CashCash from '../src/cashcash.js';
 
@@ -36,112 +38,112 @@ test('invalid selector, no context', t => {
   for (const invalidArgument of invalidArguments) {
     const cash = CashCash(invalidArgument);
 
-    t.is(cash.context, undefined);
-    t.is(cash.selector, undefined);
-    t.is(cash.length, 0);
+    assert.strictEqual(cash.context, undefined);
+    assert.strictEqual(cash.selector, undefined);
+    assert.strictEqual(cash.length, 0);
   }
 });
 
 test('valid non-matching selector', t => {
   const cash = CashCash('#foo');
 
-  t.is(cash.context, document);
-  t.is(cash.selector, '#foo');
-  t.is(cash.length, 0);
+  assert.strictEqual(cash.context, document);
+  assert.strictEqual(cash.selector, '#foo');
+  assert.strictEqual(cash.length, 0);
 });
 
 test('valid non-matching selector, invalid context', t => {
   for (const invalidArgument of invalidArguments) {
     const cash = CashCash('#foo', invalidArgument);
 
-    t.is(cash.context, document);
-    t.is(cash.selector, '#foo');
-    t.is(cash.length, 0);
+    assert.strictEqual(cash.context, document);
+    assert.strictEqual(cash.selector, '#foo');
+    assert.strictEqual(cash.length, 0);
   }
 });
 
 test('valid non-matching selector, valid non-matching context (String)', t => {
   const cash = CashCash('#foo', '#bar');
 
-  t.is(cash.context, document);
-  t.is(cash.selector, '#bar #foo');
-  t.is(cash.length, 0);
+  assert.strictEqual(cash.context, document);
+  assert.strictEqual(cash.selector, '#bar #foo');
+  assert.strictEqual(cash.length, 0);
 });
 
 test('valid non-matching selector, valid non-matching context (HTMLElement)', t => {
   const context = document.querySelector('#bar');
   const cash = CashCash('#foo', context);
 
-  t.is(cash.context, document);
-  t.is(cash.selector, '#foo');
-  t.is(cash.length, 0);
+  assert.strictEqual(cash.context, document);
+  assert.strictEqual(cash.selector, '#foo');
+  assert.strictEqual(cash.length, 0);
 });
 
 test('valid non-matching selector, valid matching context (String)', t => {
   const cash = CashCash('#foo', '#fixtures');
 
-  t.is(cash.context, document);
-  t.is(cash.selector, '#fixtures #foo');
-  t.is(cash.length, 0);
+  assert.strictEqual(cash.context, document);
+  assert.strictEqual(cash.selector, '#fixtures #foo');
+  assert.strictEqual(cash.length, 0);
 });
 
 test('valid non-matching selector, valid matching context (HTMLElement)', t => {
   const context = document.querySelector('#fixtures');
   const cash = CashCash('#foo', context);
 
-  t.is(cash.context, context);
-  t.is(cash.selector, '#foo');
-  t.is(cash.length, 0);
+  assert.strictEqual(cash.context, context);
+  assert.strictEqual(cash.selector, '#foo');
+  assert.strictEqual(cash.length, 0);
 });
 
 test('valid matching selector', t => {
   const cash = CashCash('#fixtures p');
 
-  t.is(cash.context, document);
-  t.is(cash.selector, '#fixtures p');
-  t.is(cash.length, 5);
+  assert.strictEqual(cash.context, document);
+  assert.strictEqual(cash.selector, '#fixtures p');
+  assert.strictEqual(cash.length, 5);
 });
 
 test('valid matching selector, invalid context', t => {
   for (const invalidArgument of invalidArguments) {
     const cash = CashCash('p', invalidArgument);
 
-    t.is(cash.context, document);
-    t.is(cash.selector, 'p');
-    t.is(cash.length, 5);
+    assert.strictEqual(cash.context, document);
+    assert.strictEqual(cash.selector, 'p');
+    assert.strictEqual(cash.length, 5);
   }
 });
 
 test('valid matching selector, valid non-matching context (String)', t => {
   const cash = CashCash('p', '#foo');
 
-  t.is(cash.context, document);
-  t.is(cash.selector, '#foo p');
-  t.is(cash.length, 0);
+  assert.strictEqual(cash.context, document);
+  assert.strictEqual(cash.selector, '#foo p');
+  assert.strictEqual(cash.length, 0);
 });
 
 test('valid matching selector, valid non-matching context (HTMLElement)', t => {
   const context = document.querySelector('#foo');
   const cash = CashCash('p', context);
 
-  t.is(cash.context, document);
-  t.is(cash.selector, 'p');
-  t.is(cash.length, 5);
+  assert.strictEqual(cash.context, document);
+  assert.strictEqual(cash.selector, 'p');
+  assert.strictEqual(cash.length, 5);
 });
 
 test('valid matching selector, valid matching context (String)', t => {
   const cash = CashCash('p', '#fixtures');
 
-  t.is(cash.context, document);
-  t.is(cash.selector, '#fixtures p');
-  t.is(cash.length, 5);
+  assert.strictEqual(cash.context, document);
+  assert.strictEqual(cash.selector, '#fixtures p');
+  assert.strictEqual(cash.length, 5);
 });
 
 test('valid matching selector, valid matching context (HTMLElement)', t => {
   const context = document.querySelector('#fixtures');
   const cash = CashCash('p', context);
 
-  t.is(cash.context, context);
-  t.is(cash.selector, 'p');
-  t.is(cash.length, 5);
+  assert.strictEqual(cash.context, context);
+  assert.strictEqual(cash.selector, 'p');
+  assert.strictEqual(cash.length, 5);
 });
