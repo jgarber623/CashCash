@@ -95,7 +95,7 @@ console.log(CashCash('p', container[0]).context); // logs a reference to `<div i
 
 ### Example
 
-For a full-featured CashCash demonstration, check out [the included example file](https://github.com/jgarber623/CashCash/blob/main/example/index.html).
+For a full-featured CashCash demonstration, check out [the demo page](https://jgarber623.github.io/CashCash/example/) and [the example file](https://github.com/jgarber623/CashCash/blob/main/example/index.html).
 
 ## Tips and Tricks
 
