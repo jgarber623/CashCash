@@ -46,7 +46,7 @@
   "devDependencies": {
     "@jgarber/eslint-config": "^5.0.0",
     "@rollup/plugin-terser": "^0.4.4",
-    "jsdom": "25.0.0",
+    "jsdom": "25.0.1",
     "rollup": "4.22.5"
   },
   "engines": {
