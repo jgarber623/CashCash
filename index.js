@@ -1,3 +1,16 @@
+/*!
+ * @name CashCash
+ * @version 5.0.0
+ *
+ * @file A very small DOM library inspired by jQuery.
+ *
+ * {@link https://github.com/jgarber623/CashCash}
+ *
+ * @copyright 2016 Jason Garber (https://sixtwothree.org)
+ * @license MIT
+ *
+ */
+
 class Cash {
   length = 0;
 

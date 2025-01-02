@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/cashcash",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "description": "A very small DOM library inspired by jQuery.",
   "keywords": [
     "dom",
@@ -13,41 +13,22 @@
   "homepage": "https://github.com/jgarber623/CashCash",
   "bugs": "https://github.com/jgarber623/CashCash/issues",
   "license": "MIT",
-  "author": {
-    "name": "Jason Garber",
-    "email": "jason@sixtwothree.org",
-    "url": "https://sixtwothree.org"
-  },
+  "author": "Jason Garber <jason@sixtwothree.org> (https://sixtwothree.org)",
   "files": [
-    "dist/*",
     "example/*",
-    "src/*"
+    "index.js"
   ],
   "type": "module",
-  "exports": {
-    "import": "./dist/cashcash.mjs",
-    "require": "./dist/cashcash.cjs"
-  },
-  "browser": "./dist/cashcash.js",
   "directories": {
     "example": "example"
   },
   "repository": "github:jgarber623/CashCash",
   "scripts": {
-    "build": "rollup --config",
-    "clean": "rm -rf coverage dist",
-    "lint": "eslint .",
-    "prebuild": "npm run clean",
-    "start": "npx concurrently --kill-others-on-fail --prefix-colors yellow,blue 'npm:start:*'",
-    "start:build": "npm run build -- --watch",
-    "start:serve": "npx http-server .",
+    "start": "npx http-server .",
     "test": "NODE_V8_COVERAGE=coverage node --experimental-test-coverage --test"
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "^6.1.0",
-    "@rollup/plugin-terser": "^0.4.4",
-    "jsdom": "^25.0.1",
-    "rollup": "^4.29.1"
+    "jsdom": "^25.0.1"
   },
   "engines": {
     "node": ">=18.8"

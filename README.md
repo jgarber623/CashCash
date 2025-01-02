@@ -6,11 +6,14 @@
 [![Downloads](https://img.shields.io/npm/dt/@jgarber/cashcash.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/@jgarber/cashcash)
 [![Build](https://img.shields.io/github/actions/workflow/status/jgarber623/CashCash/ci.yml?branch=main&logo=github&style=for-the-badge)](https://github.com/jgarber623/CashCash/actions/workflows/ci.yml)
 
+> [!NOTE]
+> CashCash is feature complete and will only be updated to address bugs or security issues.
+
 ### Key Features
 
 - Uses JavaScript's native [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) method
 - Dependency-free
-- JavaScript module (ESM), CommonJS, and browser global (`window.CashCash`) support
+- JavaScript module (ESM) support
 
 ## Getting CashCash
 
@@ -104,21 +107,8 @@ For a full-featured CashCash demonstration, check out [the demo page](https://jg
 If you want to cut down on some typing (and potentially confuse your teammates), you can reassign `CashCash` to `$` to mimic jQuery:
 
 ```html
-<script src="./dist/cashcash.js"></script>
-<script>
-  (function($) {
-    const paragraphs = $("p");
-
-    // …
-  })(CashCash);
-</script>
-```
-
-…or:
-
-```html
 <script type="module">
-  import $ from "./dist/cashcash.mjs";
+  import { default as $ } from "@jgarber/cashcash";
 
   const paragraphs = $("p");
 
