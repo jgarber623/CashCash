@@ -13,6 +13,14 @@
       line-height: 1.5;
       padding: 3rem;
     }
+
+    small {
+      color: #c00;
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: bold;
+      padding-inline-end: 0.5rem;
+    }
   </style>
 </head>
 <body>
@@ -34,13 +42,13 @@
 
     const main = $("main");
     const h1 = $("h1", main[0]);
-    const p = $("p");
+    const paragraphs = $("p");
 
-    console.log("Main content:", main);
-    console.log("Primary heading:", h1);
-    console.log("Paragraphs:", p);
+    h1[0].insertAdjacentHTML("afterend", `<small>This text is rendered using a reference to the adjacent <code>h1</code> heading element and a context referencing the <code>main</code> element.</small>`);
 
-    p.forEach(node => console.log(node.id));
+    paragraphs.forEach(paragraph => {
+      paragraph.insertAdjacentHTML("afterbegin", `<small>This text is rendered using a reference to the paragraph element: <code>p#${paragraph.id}</code>.</small>`)
+    });
   </script>
 
 </body>
