@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { JSDOM } from "jsdom";
 
-import CashCash from "./index.js";
+import CashCash from "@jgarber/cashcash";
 
 const html = `\
   <!doctype html>
