@@ -14,11 +14,12 @@
   "bugs": "https://github.com/jgarber623/CashCash/issues",
   "license": "MIT",
   "author": "Jason Garber <jason@sixtwothree.org> (https://sixtwothree.org)",
+  "type": "module",
   "files": [
     "example/*",
     "index.js"
   ],
-  "type": "module",
+  "exports": "./index.js",
   "directories": {
     "example": "example"
   },
