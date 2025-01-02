@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/cashcash",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "A very small DOM library inspired by jQuery.",
   "keywords": [
     "dom",
