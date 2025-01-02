@@ -44,10 +44,10 @@
     "test": "NODE_V8_COVERAGE=coverage node --experimental-test-coverage --test"
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "^5.0.0",
+    "@jgarber/eslint-config": "^6.1.0",
     "@rollup/plugin-terser": "^0.4.4",
-    "jsdom": "25.0.1",
-    "rollup": "4.24.3"
+    "jsdom": "^25.0.1",
+    "rollup": "^4.29.1"
   },
   "engines": {
     "node": ">=18"
