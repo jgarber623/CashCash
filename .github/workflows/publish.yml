@@ -30,6 +30,7 @@ jobs:
     name: Publish to GitHub Packages
     permissions:
       contents: read
+      id-token: write
       packages: write
     needs: ci
     runs-on: ubuntu-latest
