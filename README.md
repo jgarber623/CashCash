@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This project has moved to [codeberg.org/jgarber/CashCash](https://codeberg.org/jgarber/CashCash).
+
 # CashCash
 
 **A very small DOM library inspired by [jQuery](https://jquery.com) that smooths over some of the rough edges in JavaScript's native DOM querying methods.**
